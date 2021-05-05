@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+
+<html  dir="ltr" lang="ru" xml:lang="ru">
+<head>
+    <title>0827_Python для машинного обучения: Строки</title>
+    <link rel="shortcut icon" href="//sdo.eduprof.ru/pluginfile.php/1/theme_fordson/favicon/1595936890/favicon.png" />
+    <meta name="apple-itunes-app" content="app-id=633359593, app-argument=https://sdo.eduprof.ru/mod/page/view.php?id=7090"/><link rel="manifest" href="https://sdo.eduprof.ru/admin/tool/mobile/mobile.webmanifest.php" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="moodle, 0827_Python для машинного обучения: Строки" />
+<link rel="stylesheet" type="text/css" href="https://sdo.eduprof.ru/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.css" /><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="https://sdo.eduprof.ru/theme/styles.php/fordson/1595936890_1/all" />
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/sdo.eduprof.ru","sesskey":"2U1AUNXvAp","sessiontimeout":"7200","themerev":"1595936890","slasharguments":1,"theme":"fordson","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1595936890","admin":"admin","svgicons":true,"usertimezone":"\u0415\u0432\u0440\u043e\u043f\u0430\/\u041c\u043e\u0441\u043a\u0432\u0430","contextid":27449,"langrev":1599527901,"templaterev":"1595936890"};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
+if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
+YUI_config = {"debug":false,"base":"https:\/\/sdo.eduprof.ru\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/sdo.eduprof.ru\/theme\/yui_combo.php?","combine":true,"filter":null,"insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/sdo.eduprof.ru\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/sdo.eduprof.ru\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/sdo.eduprof.ru\/theme\/yui_combo.php?m\/1595936890\/","combine":true,"comboBase":"https:\/\/sdo.eduprof.ru\/theme\/yui_combo.php?","ext":false,"root":"m\/1595936890\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":null,"modules":{"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-modchooser":{"requires":["moodle-core-chooserdialogue","moodle-course-coursebase"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_bbbibn-modform":{"requires":["base","node"]},"moodle-mod_bbbibn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbibn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbibn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbibn-imports":{"requires":["base","node"]},"moodle-mod_bbbiibn-modform":{"requires":["base","node"]},"moodle-mod_bbbiibn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbiibn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbiibn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbiibn-imports":{"requires":["base","node"]},"moodle-mod_bbbiiibn-modform":{"requires":["base","node"]},"moodle-mod_bbbiiibn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbiiibn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbiiibn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbiiibn-imports":{"requires":["base","node"]},"moodle-mod_bbbivbn-modform":{"requires":["base","node"]},"moodle-mod_bbbivbn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbivbn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbivbn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbivbn-imports":{"requires":["base","node"]},"moodle-mod_bbbrbn-modform":{"requires":["base","node"]},"moodle-mod_bbbrbn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbrbn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbrbn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbrbn-imports":{"requires":["base","node"]},"moodle-mod_bbbsbn-modform":{"requires":["base","node"]},"moodle-mod_bbbsbn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbsbn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbsbn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbsbn-imports":{"requires":["base","node"]},"moodle-mod_bbbvbn-modform":{"requires":["base","node"]},"moodle-mod_bbbvbn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbvbn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbvbn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbvbn-imports":{"requires":["base","node"]},"moodle-mod_bbbvibn-modform":{"requires":["base","node"]},"moodle-mod_bbbvibn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbvibn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbvibn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bbbvibn-imports":{"requires":["base","node"]},"moodle-mod_bigbbbn-modform":{"requires":["base","node"]},"moodle-mod_bigbbbn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbbbn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbbbn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbbbn-imports":{"requires":["base","node"]},"moodle-mod_bigbluebuttonbn-modform":{"requires":["base","node"]},"moodle-mod_bigbluebuttonbn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbluebuttonbn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbluebuttonbn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbluebuttonbn-imports":{"requires":["base","node"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-warning","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emojipicker-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_h5p-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_html-beautify":{},"moodle-atto_html-codemirror":{"requires":["moodle-atto_html-codemirror-skin"]},"moodle-atto_html-button":{"requires":["promise","moodle-editor_atto-plugin","moodle-atto_html-beautify","moodle-atto_html-codemirror","event-valuechange"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]}}},"gallery":{"name":"gallery","base":"https:\/\/sdo.eduprof.ru\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/sdo.eduprof.ru\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1595936890\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/sdo.eduprof.ru\/lib\/javascript.php\/1595936890\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/sdo.eduprof.ru\/lib\/javascript.php\/1595936890\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/mathjax\/2.7.2\/MathJax.js?delayStartupUntil=configured"}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body  id="page-mod-page-view" class="format-topics  path-mod path-mod-page chrome dir-ltr lang-ru yui-skin-sam yui3-skin-sam sdo-eduprof-ru pagelayout-incourse course-342 context-27449 cmid-7090 category-34 ">
+
+<div id="page-wrapper">
+
+    <div>
+    <a class="sr-only sr-only-focusable" href="#maincontent">Перейти к основному содержанию</a>
+</div><script type="text/javascript" src="https://sdo.eduprof.ru/lib/javascript.php/1595936890/lib/babel-polyfill/polyfill.min.js"></script>
+<script type="text/javascript" src="https://sdo.eduprof.ru/lib/javascript.php/1595936890/lib/mdn-polyfills/polyfill.js"></script>
+<script type="text/javascript" src="https://sdo.eduprof.ru/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.js"></script><script type="text/javascript" src="https://sdo.eduprof.ru/theme/jquery.php/core/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://sdo.eduprof.ru/lib/javascript.php/1595936890/lib/javascript-static.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+
+    <nav class="fixed-top navbar navbar-fhs   navbar-expand moodle-has-zindex">
+            <div data-region="drawer-toggle" class="d-inline-block mr-3">
+                <button aria-expanded="false" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-secondary" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav"><i class="icon fa fa-bars fa-fw " aria-hidden="true"  ></i><span class="sr-only">Боковая панель</span></button>
+            </div>
+            <a href="https://sdo.eduprof.ru" class="navbar-brand has-logo
+                    ">
+                    <span class="logo d-none d-sm-inline">
+                        <img src="https://sdo.eduprof.ru/pluginfile.php/1/core_admin/logocompact/100x100/1595936890/logo_100.png" alt="Моя профессия">
+                    </span>
+                <span class="site-name d-none d-md-inline">Моя профессия</span>
+            </a>
+            
+            <!-- course_controls -->
+            <div class="coursecontrols nav-item d-flex">
+                <div class="studentdash nav-item nav-link">
+        <a role="button" data-tooltip="tooltip" data-placement= "bottom" title="Панель управления курса" data-toggle="modal" href="#studentdashslider" class="btn btn-secondary fhs-tooltip"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+    </div>
+                
+            </div>
+    
+            <ul class="navbar-nav d-none d-md-flex">
+                <!-- custom_menu -->
+                <li class="dropdown nav-item">
+    <a class="dropdown-toggle nav-link" id="drop-down-5f574ab02e0335f574ab028bf72" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" aria-controls="drop-down-menu-5f574ab02e0335f574ab028bf72">
+        Мои курсы
+    </a>
+    <div class="dropdown-menu" role="menu" id="drop-down-menu-5f574ab02e0335f574ab028bf72" aria-labelledby="drop-down-5f574ab02e0335f574ab028bf72">
+                <a class="dropdown-item" role="menuitem" href="https://sdo.eduprof.ru/my" title="Личный кабинет">Личный кабинет</a>
+                <a class="dropdown-item" role="menuitem" href="https://sdo.eduprof.ru/course/view.php?id=342" title="0827_Python для машинного обучения">0827_Python для машинного обучения</a>
+    </div>
+</li>
+                <li class="nav-item">
+    <a class="nav-item nav-link" href="http://eduprof.ru/contacts/" target="_blank"" title="Техническая поддержка">Техническая поддержка</a>
+</li><li class="dropdown nav-item">
+    <a class="dropdown-toggle nav-link" id="drop-down-5f574ab02e4645f574ab028bf73" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" aria-controls="drop-down-menu-5f574ab02e4645f574ab028bf73">
+        Мобильное приложение
+    </a>
+    <div class="dropdown-menu" role="menu" id="drop-down-menu-5f574ab02e4645f574ab028bf73" aria-labelledby="drop-down-5f574ab02e4645f574ab028bf73">
+                <a class="dropdown-item" role="menuitem" href="https://play.google.com/store/apps/details?id=com.moodle.moodlemobile%22%20target%3D%22_blank%22" title="Android App">Android App</a>
+                <div class="dropdown-divider" role="presentation"></div>
+                <a class="dropdown-item" role="menuitem" href="https://apps.apple.com/ru/app/moodle-mobile/id633359593" target="_blank"" title="Apple App">Apple App</a>
+    </div>
+</li>
+                <!-- page_heading_menu -->
+                
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <div class="d-none d-lg-block">
+                <div class="search-input-wrapper nav-link" id="5f574ab02e534"><div role="button" tabindex="0"><i class="icon fa fa-search fa-fw "  title="Поиск" aria-label="Поиск"></i></div><form class="search-input-form" action="https://sdo.eduprof.ru/search/index.php"><label for="id_q_5f574ab02e534" class="accesshide">Введите ваш поисковый запрос</label><input type="text" name="q" placeholder="Поиск" size="13" tabindex="-1" id="id_q_5f574ab02e534" class="form-control"></input><input type="hidden" name="context" value="27449" /></form></div>
+            </div>
+                <!-- navbar_plugin_output -->
+                <li class="nav-item">
+                <div class="popover-region collapsed popover-region-notifications"
+    id="nav-notification-popover-container" data-userid="4536"
+    data-region="popover-region">
+    <div class="popover-region-toggle nav-link"
+        data-region="popover-region-toggle"
+        role="button"
+        aria-controls="popover-region-container-5f574ab02f9485f574ab028bf74"
+        aria-haspopup="true"
+        aria-label="Показать окно без новых уведомлений"
+        tabindex="0">
+                <i class="icon fa fa-bell fa-fw "  title="Переключить меню уведомлений" aria-label="Переключить меню уведомлений"></i>
+        <div class="count-container hidden" data-region="count-container"
+        aria-label="There are 0 unread notifications">0</div>
+
+    </div>
+    <div 
+        id="popover-region-container-5f574ab02f9485f574ab028bf74"
+        class="popover-region-container"
+        data-region="popover-region-container"
+        aria-expanded="false"
+        aria-hidden="true"
+        aria-label="Окно уведомления"
+        role="region">
+        <div class="popover-region-header-container">
+            <h3 class="popover-region-header-text" data-region="popover-region-header-text">Уведомления</h3>
+            <div class="popover-region-header-actions" data-region="popover-region-header-actions">        <a class="mark-all-read-button"
+           href="#"
+           title="Пометить все прочитанным"
+           data-action="mark-all-read"
+           role="button">
+            <span class="normal-icon"><i class="icon fa fa-check fa-fw "  title="Пометить все прочитанным" aria-label="Пометить все прочитанным"></i></span>
+            <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Загрузка" aria-label="Загрузка"></i></span>
+        </a>
+        <a href="https://sdo.eduprof.ru/message/notificationpreferences.php?userid=4536"
+           title="Настройка уведомлений">
+            <i class="icon fa fa-cog fa-fw "  title="Настройка уведомлений" aria-label="Настройка уведомлений"></i>
+        </a>
+</div>
+        </div>
+        <div class="popover-region-content-container" data-region="popover-region-content-container">
+            <div class="popover-region-content" data-region="popover-region-content">
+                        <div class="all-notifications"
+            data-region="all-notifications"
+            role="log"
+            aria-busy="false"
+            aria-atomic="false"
+            aria-relevant="additions"></div>
+        <div class="empty-message" tabindex="0" data-region="empty-message">Уведомлений нет</div>
+
+            </div>
+            <span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Загрузка" aria-label="Загрузка"></i></span>
+        </div>
+                <a class="see-all-link"
+                    href="https://sdo.eduprof.ru/message/output/popup/notifications.php">
+                    <div class="popover-region-footer-container">
+                        <div class="popover-region-seeall-text">Смотреть все</div>
+                    </div>
+                </a>
+    </div>
+</div>
+                </li>
+                <!-- user_menu -->
+                <li class="nav-item d-flex align-items-center">
+                    <div class="usermenu"><div class="action-menu moodle-actionmenu nowrap-items d-inline" id="action-menu-1" data-enhance="moodle-core-actionmenu">
+
+        <div class="menubar d-flex " id="action-menu-1-menubar" role="menubar">
+
+            
+
+
+                <div class="action-menu-trigger">
+                    <div class="dropdown">
+                        <a href="#" tabindex="0" class=" dropdown-toggle icon-no-margin" id="dropdown-1" aria-label="Меню пользователя" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="action-menu-1-menu">
+                            
+                            <span class="userbutton"><span class="usertext mr-1">Станислав Байков</span><span class="avatars"><span class="avatar current"><img src="https://sdo.eduprof.ru/theme/image.php/fordson/core/1595936890/u/f2" class="userpicture defaultuserpic" width="35" height="35" role="presentation" aria-hidden="true" /></span></span></span>
+                                
+                            <b class="caret"></b>
+                        </a>
+                            <div class="dropdown-menu dropdown-menu-right menu  align-tr-br" id="action-menu-1-menu" data-rel="menu-content" aria-labelledby="action-menu-toggle-1" role="menu" data-align="tr-br" id="dropdown-menu-1">
+                                        <a href="https://sdo.eduprof.ru/my/" class="dropdown-item menu-action" role="menuitem" data-title="mymoodle,admin" aria-labelledby="actionmenuaction-1">
+                                                <i class="icon fa fa-tachometer fa-fw " aria-hidden="true"  ></i>
+                                            <span class="menu-action-text" id="actionmenuaction-1">
+                                                Личный кабинет
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-divider" role="presentation"><span class="filler">&nbsp;</span></div>
+                                        <a href="https://sdo.eduprof.ru/user/profile.php?id=4536" class="dropdown-item menu-action" role="menuitem" data-title="profile,moodle" aria-labelledby="actionmenuaction-2">
+                                                <i class="icon fa fa-user fa-fw " aria-hidden="true"  ></i>
+                                            <span class="menu-action-text" id="actionmenuaction-2">
+                                                О пользователе
+                                            </span>
+                                        </a>
+                                        <a href="https://sdo.eduprof.ru/grade/report/overview/index.php" class="dropdown-item menu-action" role="menuitem" data-title="grades,grades" aria-labelledby="actionmenuaction-3">
+                                                <i class="icon fa fa-table fa-fw " aria-hidden="true"  ></i>
+                                            <span class="menu-action-text" id="actionmenuaction-3">
+                                                Оценки
+                                            </span>
+                                        </a>
+                                        <a href="https://sdo.eduprof.ru/user/preferences.php" class="dropdown-item menu-action" role="menuitem" data-title="preferences,moodle" aria-labelledby="actionmenuaction-4">
+                                                <i class="icon fa fa-wrench fa-fw " aria-hidden="true"  ></i>
+                                            <span class="menu-action-text" id="actionmenuaction-4">
+                                                Настройки
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-divider" role="presentation"><span class="filler">&nbsp;</span></div>
+                                        <a href="https://sdo.eduprof.ru/login/logout.php?sesskey=2U1AUNXvAp" class="dropdown-item menu-action" role="menuitem" data-title="logout,moodle" aria-labelledby="actionmenuaction-5">
+                                                <i class="icon fa fa-sign-out fa-fw " aria-hidden="true"  ></i>
+                                            <span class="menu-action-text" id="actionmenuaction-5">
+                                                Выход
+                                            </span>
+                                        </a>
+                            </div>
+                    </div>
+                </div>
+
+        </div>
+
+</div></div>
+                </li>
+            </ul>
+            <!-- search_box -->
+    </nav>
+    
+
+        <div class="headerbkg"><div class="default" style="background-image: url(&quot;https://sdo.eduprof.ru/theme/image.php/fordson/theme/1595936890/headerbg&quot;); background-size: cover; background-position:center;
+                width: 100%; height: 100%;"></div></div>
+
+    <div id="page" class="container-fluid">
+        
+        <div id="learningcontent">
+        
+            <div class="modal fade" id="studentdashslider" tabindex="-1" role="dialog" aria-labelledby="teacherdashslider" aria-hidden="true">
+<div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+    <div class="modal-body">
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+        <div class="studentdashboard">
+        <div class="container-fluid">
+            <div class="row">
+
+                    <div class="col-md-2 studentgradebook">
+                        <p>Мои оценки</p><a href="https://sdo.eduprof.ru/grade/report/user/index.php?id=342" alt="Мои оценки"><i class="fa fa-5x fa-bar-chart"></i></a>
+                    </div>
+
+                    
+                </div>
+
+            <div class="row">
+                    <div class="col-md-4 coursesummary">
+                        <div class="dashtitle">
+                            <h3><i class="fa fa-map">&nbsp</i>Описание курса</h3>
+                        </div>
+                            <div class="card-block">
+                                    
+                            </div>
+                    </div>
+
+                    <div class="col-md-5 coursestafflisting">
+                        <div class="dashtitle">
+                            <h3><i class="fa fa-users">&nbsp</i>Учители курса</h3>
+                        </div>
+                            <div class="list-group">
+                            </div>
+                            <div class="list-group">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 activitylinks">
+                        <div class="dashtitle">
+                            <h3><i class="fa fa-check-square-o dashicon"></i>Элементы курса</h3>     
+                        </div>
+                        <div class="list-group">
+                            <div class="list-group" aria-labelledby="list-group-5f574ab034d415f574ab028bf712">
+        <a href="https://sdo.eduprof.ru/mod/scorm/index.php?id=342"class="list-group-item" >Пакеты SCORM</a>
+        <a href="https://sdo.eduprof.ru/course/resources.php?id=342"class="list-group-item" >Ресурсы</a>
+        <a href="https://sdo.eduprof.ru/mod/bbbvbn/index.php?id=342"class="list-group-item" >bbbvBN</a>
+ </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 studentprogress">
+                    Мой прогресс 
+                    <div class="progress border w-100">
+    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="1" style= "width: 1%" aria-valuemin="0" aria-valuemax="100"> 
+    	<div class="small">
+		    <span class="sr-only">Course progress:</span>
+		    <strong>1Завершено, % </strong>
+		</div>
+    </div>
+</div>
+                </div>
+        </div>
+        </div>
+
+    </div>
+    </div>
+
+</div>
+</div>
+
+<div style="clear:both;"></div>
+            <header id="page-header" class="row">
+    <div class="col-12 pt-3 pb-3">
+        <div class="card ">
+            <div class="card-body ">
+                <div class="d-flex">
+                    <div class="mr-auto">
+                        <a href="https://sdo.eduprof.ru/course/view.php?id=342"><div class="page-context-header"><div class="page-header-headings"><h1>0827_Python для машинного обучения</h1></div></div></a>
+                    </div>
+
+                </div>
+                <div class="d-flex flex-wrap">
+                    <div id="page-navbar">
+                        <nav role="navigation" aria-label="Панель навигации">
+    <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="https://sdo.eduprof.ru/my/"  >Личный кабинет</a>
+                </li>
+                <li class="breadcrumb-item">Мои курсы</li>
+                <li class="breadcrumb-item">
+                    <a href="https://sdo.eduprof.ru/course/index.php?categoryid=34"  >По направлению от ЦЗН </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="https://sdo.eduprof.ru/course/view.php?id=342"  title="0827_Python для машинного обучения">0827_Python для машинного обучения</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="https://sdo.eduprof.ru/course/view.php?id=342#section-3"  >Раздел 1. Введение в машинное обучение и нейросети</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="https://sdo.eduprof.ru/mod/page/view.php?id=7090" aria-current="page" title="Страница">Строки</a>
+                </li>
+    </ul>
+</nav>
+                    </div>
+                    <div class="ml-auto d-flex">
+                        
+                    </div>
+                    <div id="course-header">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+            
+            <div id="page-content" class="row pb-3">
+                <div id="region-main-box" class="col-12">
+                    <section id="region-main" >
+
+                                
+                                <span class="notifications" id="user-notifications"></span>
+                                <div role="main"><span id="maincontent"></span><h2>Строки</h2><div class="box py-3 generalbox center clearfix"><div class="no-overflow"><p></p><div data-type="activity_article" id="activity-87158"><div data-id="87158"><div><div id="block-167373"><div><p><a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">Строки</a> это упорядоченные последовательности символов, для работы с текстовой информацией. Чтобы присвоить переменной строковое значение, достаточно приравнять выражение в кавычках.</p><pre>s = 'ain"t it fun?'<br>s = "ain't it fun?"</pre><p>Как говорилось ранее, разницы между одинарными и двойными кавычками нет, они были введены для того, чтобы можно было не экранировать кавычки внутри предложения, как показано на примере выше. То есть, если бы мы в первом варианте с одинарными кавычками в слове&nbsp;<b>ant"t</b>&nbsp;применили также одинарную кавычку, тогда бы мы получили сообщение об ошибке, потому что наша строка состояла бы только из символов&nbsp;<b>'ain'</b>, остальной текст не был бы воспринят как часть <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a>, и в конце стояла бы одинокая открывающая кавычка. Но и этого можно избежать применив экранирование, или другими словами - отмену действия прямого назначения символа:</p><pre>&nbsp;s = 'ain\'t it fun?'</pre><p>В данном случае символ&nbsp;<b>\</b>&nbsp;отменяет действие кавычки, то есть она не закрывает строку, а воспринимается как часть выражения и заканчивается оно в самом конце, однако не всегда такой вид удобночитаем.</p><p>Существуют различные экранированные последовательности, которые позволяют вставить символы, которые трудно ввести с клавиатуры, приведем пример одной из таких последовательностей:</p><ul><li><b>\n</b>&nbsp;- перевод <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a></li></ul><pre>&gt;&gt;&gt; s = 'ain"t \nit \nfun?'<br>&gt;&gt;&gt; print(s)<br>ain"t<br>it<br>fun?</pre></div></div></div></div></div><div data-type="activity_article" id="activity-87159"><div data-id="87159"><div><div><i></i></div></div><div><div><div><h3>Операции со строками</h3></div></div><div id="block-167374"><div><p><a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">Строки</a> можно складывать:</p><pre>&nbsp;&gt;&gt;&gt; s_1 = 'Python'<br>&gt;&gt;&gt; s_2 = ' '<br>&gt;&gt;&gt; s_3 = 'is awesome!'<br>&gt;&gt;&gt; print(s_1 + s_2 + s_3)<br>'Python is awesome!'</pre><p>Или дублировать:</p><pre>&gt;&gt;&gt; print('spam' * 3)<br>spamspamspam</pre><p>С помощью метода&nbsp;<strong>len()</strong>&nbsp;можно узнать количество символов в строке:</p><pre>&gt;&gt;&gt; len('Python')<br>6</pre><p>Можно обращаться к элементам по их индексу&nbsp;<strong>(индексация ведется от нуля)</strong>:</p><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; print(s[0])<br>P<br>&gt;&gt;&gt; print(s[5])<br>n</pre><p>По индексу можно извлекать несколько символов, тогда это будет называться&nbsp;<strong>срез</strong>:</p><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; print(s[1:2])<br>y<br>&gt;&gt;&gt; print(s[0:])<br>Python<br>&gt;&gt;&gt; print(s[:3])<br>Pyt<br>&gt;&gt;&gt; print(s[:])<br>Python</pre><p>Методов работы со строками довольно много, мы рассмотрим часть наиболее популярных:</p><ul><li><strong>find(str, [start],[end])</strong>&nbsp;- Поиск под<a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a> в строке. Возвращает номер первого вхождения или -1</li></ul><pre>&gt;&gt;&gt; s = 'PythonohtyP'<br>&gt;&gt;&gt; s.find('t')<br>2</pre><ul><li><strong>rfind(str, [start],[end])&nbsp;</strong>- Поиск под<a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a> в строке. Возвращает номер последнего вхождения или -1</li></ul><pre>&gt;&gt;&gt; s = 'PythonohtyP'<br>&gt;&gt;&gt; s.rfind('t')<br>8</pre><ul><li><strong>index(str, [start],[end])</strong>&nbsp;- Поиск под<a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a> в строке. Возвращает номер первого вхождения или вызывает&nbsp;<strong>ValueError</strong></li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.index('t')<br>2</pre><ul><li><strong>rindex(str, [start],[end])</strong>&nbsp;- Поиск под<a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a> в строке. Возвращает номер последнего вхождения или вызывает&nbsp;<strong>ValueError</strong></li></ul><pre>&gt;&gt;&gt; s = 'PythonohtyP'<br>&gt;&gt;&gt; s.rindex('t')<br>8</pre><ul><li><strong>replace(шаблон, замена)</strong>&nbsp;- Замена шаблона</li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.replace('P', 'AAA')<br>'AAAython'</pre><ul><li><strong>split(символ)</strong>&nbsp;- Разбиение <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a> по разделителю</li></ul><pre>&nbsp;&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.split('t')<br>['Py', 'hon']</pre><ul><li><strong>isdigit()&nbsp;</strong>- Состоит ли строка из цифр</li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.isdigit()<br>False</pre><ul><li><strong>isalpha()</strong>&nbsp;- Состоит ли строка из букв</li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.isalpha()<br>True</pre><ul><li><strong>isalnum()</strong>&nbsp;- Состоит ли строка из цифр или букв</li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.isalnum()<br>True</pre><ul><li><strong>islower()</strong>&nbsp;- Состоит ли строка из символов в нижнем регистре</li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.islower()<br>False</pre><ul><li><strong>isupper()</strong>&nbsp;- Состоит ли строка из символов в верхнем регистре</li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.isupper()<br>False</pre><ul><li><strong>istitle()</strong>&nbsp;- Начинаются ли слова в строке с заглавной буквы</li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.istitle()<br>True</pre><ul><li><strong>upper()</strong>&nbsp;- Преобразование <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a> к верхнему регистру</li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.upper()<br>'PYTHON'</pre><ul><li><strong>lower()</strong>&nbsp;- Преобразование <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a> к нижнему регистру</li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.lower()<br>'python'</pre><ul><li><strong>startswith(str)</strong>&nbsp;- Начинается ли строка&nbsp;<strong>S</strong>&nbsp;с шаблона&nbsp;<strong>str</strong></li></ul><pre>&nbsp;&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.startswith('P')<br>True</pre><ul><li><strong>endswith(str)</strong>&nbsp;- Заканчивается ли строка&nbsp;<strong>S</strong>&nbsp;шаблоном<strong>&nbsp;str</strong></li></ul><pre>&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.endswith('a')<br>False</pre><ul><li><strong>join(список)</strong>&nbsp;- Сборка <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a> из списка с разделителем&nbsp;<strong>S</strong></li></ul><pre>&nbsp;&gt;&gt;&gt; s = 'Python'<br>&gt;&gt;&gt; s.join(['a','b','c'])<br>'aPythonbPythonc'</pre></div></div></div></div></div><a class="autolink" title="Задание" href="https://sdo.eduprof.ru/mod/url/view.php?id=7499">Задание</a> 1.<br><p>Дана строка: Abracadabra</p><p>Требуется:</p><ol><li>Вывести третий символ этой <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a>.</li><li>Вывести предпоследний символ этой <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a>.</li><li>Вывести первые пять символов этой <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a>.</li><li>Вывести строку, кроме последних двух символов.</li><li>Вывести все символы с четными индексами (считайте, что 0 - четный индекс).</li><li>Вывести все символы с нечетными индексами.</li><li>Вывести все символы в обратном порядке.</li><li>Вывести все символы <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a> через один в обратном порядке, начиная с последнего.</li><li>Вывести длину данной <a class="autolink" title="Строки" href="https://sdo.eduprof.ru/mod/page/view.php?id=7878">строки</a>.</li></ol><br><p></p></div></div><div class="modified">Последнее изменение: Среда, 5 Август 2020, 21:33</div></div>
+                                
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+        <div id="nav-drawer" data-region="drawer" class="d-print-none moodle-has-zindex closed" aria-hidden="true" tabindex="-1">
+            <nav class="list-group" aria-label="0827_Python для машинного обучения">
+                <ul>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342" data-key="coursehome" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" >
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">0827_Python для машинного обучения</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/user/index.php?id=342" data-key="participants" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="90" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-users fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Участники</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/badges/view.php?type=2&amp;id=342" data-key="badgesview" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-shield fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Значки</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/grade/report/index.php?id=342" data-key="grades" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-table fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Оценки</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-0" data-key="1936" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Приветствие</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-1" data-key="1937" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">ВЕБИНАР</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-2" data-key="1938" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Подведение итогов</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action active" href="https://sdo.eduprof.ru/course/view.php?id=342#section-3" data-key="1964" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="1" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body font-weight-bold">Раздел 1. Введение в машинное обучение и нейросети</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-4" data-key="1965" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Раздел 2. Библиотеки работы с данными (NumPy, Pandas, SciPy)</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-5" data-key="1966" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Раздел3. Инструменты библиотеки Sсikit-learn для машинного обучения</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-6" data-key="1967" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Раздел 4. Работа с тензорами в библиотеке TensorFlow</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-7" data-key="1968" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Раздел 5. Построение нейросети инструментами библиотеки Keras</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-8" data-key="1969" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Раздел 6. Инструменты фреймворка Caffe для обучения нейросетей</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-9" data-key="1970" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Раздел 7. Инструменты PyTorch для глубокого машинного обучения</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-10" data-key="1971" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Глоссарий</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-11" data-key="1972" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Итоговое задание</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-12" data-key="1974" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Полезные ссылки</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-13" data-key="2103" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Основы разработки</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-14" data-key="2107" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Тема 14</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-15" data-key="2108" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Основы Python</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342#section-16" data-key="2131" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="342">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Основы алгоритмизации</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        </ul>
+                        </nav>
+                        <nav class="list-group mt-1" aria-label="Сайт">
+                        <ul>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/my/" data-key="myhome" data-isexpandable="0" data-indent="0" data-showdivider="1" data-type="1" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0" >
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-tachometer fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Личный кабинет</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/?redirect=0" data-key="home" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="myhome">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-home fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Домашняя страница</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/calendar/view.php?view=month&amp;course=342" data-key="calendar" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-calendar fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Календарь</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/user/files.php" data-key="privatefiles" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-file-o fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">Личные файлы</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="list-group-item" data-key="mycourses" data-isexpandable="1" data-indent="0" data-showdivider="0" data-type="0" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="myhome">
+                                <div class="ml-0">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body">Мои курсы</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="list-group-item list-group-item-action " href="https://sdo.eduprof.ru/course/view.php?id=342" data-key="342" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="34">
+                                <div class="ml-1">
+                                    <div class="media">
+                                            <span class="media-left">
+                                                <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"  ></i>
+                                            </span>
+                                        <span class="media-body ">0827_Python для машинного обучения</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="mt-5 mb-1 activity-navigation">
+<div class="row">
+    <div class="col-md-4">        <div class="float-left">
+                <a href="https://sdo.eduprof.ru/mod/resource/view.php?id=7089&forceview=1" id="prev-activity-link" class="btn btn-link"  title="Книга по Python" >&#x25C0;&#xFE0E; Книга по Python</a>
+
+        </div>
+</div>
+    <div class="col-md-4">        <div class="mdl-align">
+            <div class="urlselect">
+    <form method="post" action="https://sdo.eduprof.ru/course/jumpto.php" class="form-inline" id="url_select_f5f574ab028bf713">
+        <input type="hidden" name="sesskey" value="2U1AUNXvAp">
+            <label for="jump-to-activity" class="sr-only">
+                Перейти на...
+            </label>
+        <select  id="jump-to-activity" class="custom-select urlselect" name="jump"
+                 >
+                    <option value="" selected>Перейти на...</option>
+                    <option value="/mod/resource/view.php?id=6942&amp;forceview=1" >Инструкция для слушателя</option>
+                    <option value="/mod/resource/view.php?id=6949&amp;forceview=1" >Профиль пользователя и его изменение</option>
+                    <option value="/mod/url/view.php?id=7905&amp;forceview=1" >«Самозанятость: с чего начать?»</option>
+                    <option value="/mod/scorm/view.php?id=7914&amp;forceview=1" >«Самозанятость: с чего начать?»</option>
+                    <option value="/mod/bbbvbn/view.php?id=6954&amp;forceview=1" >ВЕБИНАР</option>
+                    <option value="/mod/page/view.php?id=6932&amp;forceview=1" >Итоговый опрос (обязательно)</option>
+                    <option value="/mod/page/view.php?id=6939&amp;forceview=1" >Итоговый анонимный опрос (по желанию)</option>
+                    <option value="/mod/page/view.php?id=6983&amp;forceview=1" >Знакомство со средой</option>
+                    <option value="/mod/page/view.php?id=6986&amp;forceview=1" >Типы данных</option>
+                    <option value="/mod/page/view.php?id=6987&amp;forceview=1" >Условный оператор</option>
+                    <option value="/mod/page/view.php?id=6991&amp;forceview=1" >Циклы</option>
+                    <option value="/mod/resource/view.php?id=7078&amp;forceview=1" >первые 10 минут</option>
+                    <option value="/mod/url/view.php?id=7083&amp;forceview=1" >2 и 3 пара</option>
+                    <option value="/mod/resource/view.php?id=7085&amp;forceview=1" >20 мин</option>
+                    <option value="/mod/page/view.php?id=7086&amp;forceview=1" >Списки в Phyton. Работа со списками</option>
+                    <option value="/mod/page/view.php?id=7087&amp;forceview=1" >Кортежи</option>
+                    <option value="/mod/resource/view.php?id=7088&amp;forceview=1" >Справочник списки</option>
+                    <option value="/mod/resource/view.php?id=7089&amp;forceview=1" >Книга по Python</option>
+                    <option value="/mod/resource/view.php?id=7091&amp;forceview=1" >Справочник по строкам</option>
+                    <option value="/mod/page/view.php?id=7092&amp;forceview=1" >Словари</option>
+                    <option value="/mod/page/view.php?id=7093&amp;forceview=1" >Множества</option>
+                    <option value="/mod/page/view.php?id=7094&amp;forceview=1" >Функции</option>
+                    <option value="/mod/resource/view.php?id=7104&amp;forceview=1" >Презентация</option>
+                    <option value="/mod/page/view.php?id=7147&amp;forceview=1" >Основы искусственного интеллекта</option>
+                    <option value="/mod/page/view.php?id=7148&amp;forceview=1" >Как ИИ меняет мир</option>
+                    <option value="/mod/page/view.php?id=7149&amp;forceview=1" >Команда и роли в ИИ проектах</option>
+                    <option value="/mod/resource/view.php?id=7150&amp;forceview=1" >вопросы к зачету</option>
+                    <option value="/mod/resource/view.php?id=7157&amp;forceview=1" >введение в терминалогию</option>
+                    <option value="/mod/resource/view.php?id=7160&amp;forceview=1" >Программа</option>
+                    <option value="/mod/resource/view.php?id=7200&amp;forceview=1" >Работа с фйлами</option>
+                    <option value="/mod/resource/view.php?id=7201&amp;forceview=1" >ноутбук 1</option>
+                    <option value="/mod/url/view.php?id=7202&amp;forceview=1" >1 занятие</option>
+                    <option value="/mod/url/view.php?id=7203&amp;forceview=1" >ссылка 2 ое занятие</option>
+                    <option value="/mod/url/view.php?id=7207&amp;forceview=1" >ссылка на все занятия</option>
+                    <option value="/mod/page/view.php?id=7575&amp;forceview=1" >Полезные ссылки</option>
+                    <option value="/mod/page/view.php?id=7204&amp;forceview=1" >Азы машинного обучения</option>
+                    <option value="/mod/page/view.php?id=7205&amp;forceview=1" >Классическое машинное обучение</option>
+                    <option value="/mod/page/view.php?id=7206&amp;forceview=1" >Машинное обучение на практике</option>
+                    <option value="/mod/resource/view.php?id=7208&amp;forceview=1" >ноут Numpy</option>
+                    <option value="/mod/resource/view.php?id=7209&amp;forceview=1" >наше</option>
+                    <option value="/mod/resource/view.php?id=7211&amp;forceview=1" >последний ноутбук</option>
+                    <option value="/mod/resource/view.php?id=7212&amp;forceview=1" >NumPy в Python. Часть 1</option>
+                    <option value="/mod/resource/view.php?id=7213&amp;forceview=1" >часть2</option>
+                    <option value="/mod/resource/view.php?id=7230&amp;forceview=1" >Чать3</option>
+                    <option value="/mod/resource/view.php?id=7231&amp;forceview=1" >NumPy в Python. Часть 3(2)</option>
+                    <option value="/mod/resource/view.php?id=7232&amp;forceview=1" >Файл с данными</option>
+                    <option value="/mod/resource/view.php?id=7233&amp;forceview=1" >Ноутбук Структуры данных</option>
+                    <option value="/mod/resource/view.php?id=7234&amp;forceview=1" >Работа с индексами</option>
+                    <option value="/mod/resource/view.php?id=7235&amp;forceview=1" >Чистка данных</option>
+                    <option value="/mod/resource/view.php?id=7236&amp;forceview=1" >Математические операции</option>
+                    <option value="/mod/url/view.php?id=7237&amp;forceview=1" >Лабораторные работы по NumPy</option>
+                    <option value="/mod/url/view.php?id=7497&amp;forceview=1" >Презентация numpy</option>
+                    <option value="/mod/url/view.php?id=7498&amp;forceview=1" >Данные</option>
+                    <option value="/mod/url/view.php?id=7499&amp;forceview=1" >Задание</option>
+                    <option value="/mod/resource/view.php?id=7500&amp;forceview=1" >3 ий ноутбук (Чистка данных)</option>
+                    <option value="/mod/resource/view.php?id=7501&amp;forceview=1" >4 ый ноутбук Матем. Часть 1</option>
+                    <option value="/mod/resource/view.php?id=7503&amp;forceview=1" >4ый ноутбук часть 2</option>
+                    <option value="/mod/resource/view.php?id=7504&amp;forceview=1" >4 ноутбук(часть3)</option>
+                    <option value="/mod/resource/view.php?id=7514&amp;forceview=1" >ДЗ 1</option>
+                    <option value="/mod/page/view.php?id=7522&amp;forceview=1" >Машинное обучение и математика</option>
+                    <option value="/mod/resource/view.php?id=7523&amp;forceview=1" >Повторение функции</option>
+                    <option value="/mod/resource/view.php?id=7524&amp;forceview=1" >Повторение вектора</option>
+                    <option value="/mod/resource/view.php?id=7525&amp;forceview=1" >Методы оптимизации</option>
+                    <option value="/mod/resource/view.php?id=7526&amp;forceview=1" >Матрицы</option>
+                    <option value="/mod/resource/view.php?id=7527&amp;forceview=1" >Производные</option>
+                    <option value="/mod/resource/view.php?id=7528&amp;forceview=1" >NumPy</option>
+                    <option value="/mod/resource/view.php?id=7529&amp;forceview=1" >Теория вероятности</option>
+                    <option value="/mod/resource/view.php?id=7530&amp;forceview=1" >Слияние и конкантенация</option>
+                    <option value="/mod/resource/view.php?id=7572&amp;forceview=1" >Статистика 1</option>
+                    <option value="/mod/resource/view.php?id=7573&amp;forceview=1" >Статистика 2</option>
+                    <option value="/mod/resource/view.php?id=7578&amp;forceview=1" >Агрегирование данных</option>
+                    <option value="/mod/resource/view.php?id=7579&amp;forceview=1" >Визуализация</option>
+                    <option value="/mod/resource/view.php?id=7580&amp;forceview=1" >ДЗ 2 (2 балла)</option>
+                    <option value="/mod/url/view.php?id=7581&amp;forceview=1" >Презентация ScyPy</option>
+                    <option value="/mod/url/view.php?id=7629&amp;forceview=1" >https://vc.ru/ml/146033-kak-uskorit-analiz-dannyh-c-pomoshchyu-pandas-profiling</option>
+                    <option value="/mod/url/view.php?id=7632&amp;forceview=1" >scrapy_tutorial</option>
+                    <option value="/mod/url/view.php?id=7634&amp;forceview=1" >решение задачи оптимизации</option>
+                    <option value="/mod/url/view.php?id=7641&amp;forceview=1" >1</option>
+                    <option value="/mod/url/view.php?id=7642&amp;forceview=1" >2</option>
+                    <option value="/mod/url/view.php?id=7643&amp;forceview=1" >данные</option>
+                    <option value="/mod/url/view.php?id=7644&amp;forceview=1" >3</option>
+                    <option value="/mod/url/view.php?id=7625&amp;forceview=1" >Машинное обучение: с чего начать, или как построить первую модель</option>
+                    <option value="/mod/url/view.php?id=7628&amp;forceview=1" >Предсказываем спрос с помощью нейронных сетей</option>
+                    <option value="/mod/url/view.php?id=7631&amp;forceview=1" >Бустинг — ещё один способ машинного обучения</option>
+                    <option value="/mod/url/view.php?id=7633&amp;forceview=1" > задачу идентификации пользователя по его поведению в сети Интернет. </option>
+                    <option value="/mod/url/view.php?id=7636&amp;forceview=1" >бенчмарк в соревновании по категоризации покупок¶</option>
+                    <option value="/mod/url/view.php?id=7637&amp;forceview=1" >интересное</option>
+                    <option value="/mod/url/view.php?id=7639&amp;forceview=1" >титаник</option>
+                    <option value="/mod/url/view.php?id=7640&amp;forceview=1" >Логистическая</option>
+                    <option value="/mod/resource/view.php?id=7669&amp;forceview=1" >Линейные модели</option>
+                    <option value="/mod/resource/view.php?id=7670&amp;forceview=1" >учебник про линейные модели</option>
+                    <option value="/mod/resource/view.php?id=7671&amp;forceview=1" >Линейная регрессия</option>
+                    <option value="/mod/resource/view.php?id=7674&amp;forceview=1" >Логистическая</option>
+                    <option value="/mod/resource/view.php?id=7716&amp;forceview=1" >Проработка данных</option>
+                    <option value="/mod/resource/view.php?id=7717&amp;forceview=1" >Запись зачет</option>
+                    <option value="/mod/resource/view.php?id=7718&amp;forceview=1" >зачет</option>
+                    <option value="/mod/url/view.php?id=7630&amp;forceview=1" >Process Mining для анализа процесса зачисления потребительских кредитов</option>
+                    <option value="/mod/url/view.php?id=7638&amp;forceview=1" >ноутбук</option>
+                    <option value="/mod/url/view.php?id=7736&amp;forceview=1" >TensorFlow </option>
+                    <option value="/mod/url/view.php?id=7826&amp;forceview=1" >1 ый ноутбук</option>
+                    <option value="/mod/url/view.php?id=7827&amp;forceview=1" >2 ой ноутбук</option>
+                    <option value="/mod/url/view.php?id=7828&amp;forceview=1" >3 ий ноутбук</option>
+                    <option value="/mod/page/view.php?id=7594&amp;forceview=1" >Постановка задачи</option>
+                    <option value="/mod/url/view.php?id=7599&amp;forceview=1" >Данные</option>
+                    <option value="/mod/url/view.php?id=7626&amp;forceview=1" >Пример хакатон</option>
+                    <option value="/mod/url/view.php?id=7627&amp;forceview=1" >Сеты с данными</option>
+                    <option value="/mod/url/view.php?id=7646&amp;forceview=1" >Машинное обучение</option>
+                    <option value="/mod/url/view.php?id=7666&amp;forceview=1" >mlcourse</option>
+                    <option value="/mod/url/view.php?id=7667&amp;forceview=1" >курс habr</option>
+                    <option value="/mod/url/view.php?id=7693&amp;forceview=1" >курс вышка</option>
+                    <option value="/mod/url/view.php?id=7694&amp;forceview=1" >еще курс вышка</option>
+                    <option value="/mod/url/view.php?id=7695&amp;forceview=1" >Степик</option>
+                    <option value="/mod/url/view.php?id=7696&amp;forceview=1" >Курс мгу</option>
+                    <option value="/mod/url/view.php?id=7697&amp;forceview=1" >курсера</option>
+                    <option value="/mod/page/view.php?id=7744&amp;forceview=1" >Добро пожаловать</option>
+                    <option value="/mod/page/view.php?id=7745&amp;forceview=1" >Библиотека</option>
+                    <option value="/mod/page/view.php?id=7746&amp;forceview=1" >Установка</option>
+                    <option value="/mod/page/view.php?id=7764&amp;forceview=1" >Простой оператор SELECT и сортировка</option>
+                    <option value="/mod/page/view.php?id=7765&amp;forceview=1" >Предикаты</option>
+                    <option value="/mod/page/view.php?id=7766&amp;forceview=1" >Переименование столбцов и вычисления в результирующем наборе</option>
+                    <option value="/mod/page/view.php?id=7767&amp;forceview=1" >  Получение итоговых значений</option>
+                    <option value="/mod/page/view.php?id=7768&amp;forceview=1" >Использование в запросе нескольких источников записей</option>
+                    <option value="/mod/page/view.php?id=7769&amp;forceview=1" >Традиционные операции над множествами</option>
+                    <option value="/mod/page/view.php?id=7770&amp;forceview=1" >Реляционное деление</option>
+                    <option value="/mod/page/view.php?id=7771&amp;forceview=1" >Использование ключевых слов SOME (ANY) и ALL с предикатами сравнения</option>
+                    <option value="/mod/page/view.php?id=7772&amp;forceview=1" >Преобразование типов и оператор CAST</option>
+                    <option value="/mod/page/view.php?id=7773&amp;forceview=1" >Оператор CASE</option>
+                    <option value="/mod/page/view.php?id=7774&amp;forceview=1" >Операторы модификации данных</option>
+                    <option value="/mod/page/view.php?id=7775&amp;forceview=1" >Оператор MERGE</option>
+                    <option value="/mod/page/view.php?id=7776&amp;forceview=1" >Функции ранжирования</option>
+                    <option value="/mod/page/view.php?id=7778&amp;forceview=1" >Оконные функции</option>
+                    <option value="/mod/page/view.php?id=7780&amp;forceview=1" >CROSS APPLY / OUTER APPLY</option>
+                    <option value="/mod/page/view.php?id=7781&amp;forceview=1" >Функция CONCAT</option>
+                    <option value="/mod/page/view.php?id=7784&amp;forceview=1" >Операторы PIVOT и UNPIVOT</option>
+                    <option value="/mod/page/view.php?id=7785&amp;forceview=1" >Общие табличные выражения (CTE)</option>
+                    <option value="/mod/page/view.php?id=7786&amp;forceview=1" >Функция EOMONTH</option>
+                    <option value="/mod/page/view.php?id=7787&amp;forceview=1" >CHAR и VARCHAR</option>
+                    <option value="/mod/page/view.php?id=7788&amp;forceview=1" >Float(n)</option>
+                    <option value="/mod/page/view.php?id=7789&amp;forceview=1" >Целочисленное деление</option>
+                    <option value="/mod/page/view.php?id=7790&amp;forceview=1" >Методы типа данных XML</option>
+                    <option value="/mod/page/view.php?id=7791&amp;forceview=1" >Функции для работы с данными типа даты/времени</option>
+                    <option value="/mod/page/view.php?id=7792&amp;forceview=1" >Функции для работы со строками</option>
+                    <option value="/mod/page/view.php?id=7793&amp;forceview=1" >Числовые функции в SQL Server</option>
+                    <option value="/mod/page/view.php?id=7794&amp;forceview=1" >Создание базовых таблиц</option>
+                    <option value="/mod/page/view.php?id=7795&amp;forceview=1" >Категорная целостность или целостность сущностей</option>
+                    <option value="/mod/page/view.php?id=7796&amp;forceview=1" >Проверочные ограничения</option>
+                    <option value="/mod/page/view.php?id=7797&amp;forceview=1" >Оператор ALTER TABLE</option>
+                    <option value="/mod/page/view.php?id=7798&amp;forceview=1" >Значения по умолчанию</option>
+                    <option value="/mod/page/view.php?id=7799&amp;forceview=1" >Ссылочная целостность: внешний ключ</option>
+                    <option value="/mod/page/view.php?id=7800&amp;forceview=1" >Вложенные запросы в проверочных ограничениях</option>
+                    <option value="/mod/page/view.php?id=7801&amp;forceview=1" >Проверочное ограничение уровня таблицы</option>
+                    <option value="/mod/page/view.php?id=7805&amp;forceview=1" >Инструкции по установке</option>
+                    <option value="/mod/page/view.php?id=7869&amp;forceview=1" >Введение в программирование на языке Python. </option>
+                    <option value="/mod/page/view.php?id=7870&amp;forceview=1" >Установка и настройка среды разработки</option>
+                    <option value="/mod/page/view.php?id=7871&amp;forceview=1" > Синтаксис</option>
+                    <option value="/mod/page/view.php?id=7872&amp;forceview=1" >Типы и объекты</option>
+                    <option value="/mod/page/view.php?id=7873&amp;forceview=1" >Типы операторов</option>
+                    <option value="/mod/page/view.php?id=7874&amp;forceview=1" >Условные операторы</option>
+                    <option value="/mod/page/view.php?id=7875&amp;forceview=1" >Циклы</option>
+                    <option value="/mod/page/view.php?id=7876&amp;forceview=1" >Как не надо называть переменные</option>
+                    <option value="/mod/page/view.php?id=7877&amp;forceview=1" >Числа</option>
+                    <option value="/mod/page/view.php?id=7878&amp;forceview=1" >Строки</option>
+                    <option value="/mod/page/view.php?id=7879&amp;forceview=1" >Списки</option>
+                    <option value="/mod/page/view.php?id=7880&amp;forceview=1" >Кортежи</option>
+                    <option value="/mod/page/view.php?id=7881&amp;forceview=1" >Словари</option>
+                    <option value="/mod/page/view.php?id=7882&amp;forceview=1" >Множества</option>
+                    <option value="/mod/page/view.php?id=7883&amp;forceview=1" >Функции</option>
+                    <option value="/mod/page/view.php?id=7884&amp;forceview=1" >Работа с файлами</option>
+                    <option value="/mod/page/view.php?id=7885&amp;forceview=1" >Исключения</option>
+                    <option value="/mod/page/view.php?id=7886&amp;forceview=1" >Подключение модулей</option>
+                    <option value="/mod/page/view.php?id=7887&amp;forceview=1" >Итог</option>
+                    <option value="/mod/page/view.php?id=7888&amp;forceview=1" >программа</option>
+        </select>
+            <noscript>
+                <input type="submit" class="btn btn-secondary ml-1" value="Применить">
+            </noscript>
+    </form>
+</div>
+
+        </div>
+</div>
+    <div class="col-md-4">        <div class="float-right">
+                <a href="https://sdo.eduprof.ru/mod/resource/view.php?id=7091&forceview=1" id="next-activity-link" class="btn btn-link"  title="Справочник по строкам" >Справочник по строкам &#x25B6;&#xFE0E;</a>
+
+        </div>
+</div>
+</div>
+</div>
+
+    
+    <footer id="page-footer" class="py-3 text-light">
+        <div class="container">
+    
+            <div id="course-footer"></div>
+    
+            <div class="row">
+    
+                    <div class="col-md-8">
+                        
+    
+                        <div class="logininfo">Вы зашли под именем <a href="https://sdo.eduprof.ru/user/profile.php?id=4536" title="Просмотр профиля">Станислав Байков</a> (<a href="https://sdo.eduprof.ru/login/logout.php?sesskey=2U1AUNXvAp">Выход</a>)</div>
+    
+                        <div class="homelink"><a href="https://sdo.eduprof.ru/course/view.php?id=342">0827_Python для машинного обучения</a></div>
+    
+    
+                    </div>
+    
+                    <div class="col-md-4">
+                        <div class="brandbox">
+    
+                            <h3>Наши контакты</h3>
+                                <ul class="footercontact">
+                                    
+                                    <li><i class="fa fa-envelope"></i>  hotline@eduprof.ru</li>
+                                    <li><i class="fa fa-mobile-phone"></i>  +7 (495) 620-48-29</li>
+                                </ul>
+    
+                            <div class="socials_wrapper">
+        <ul class="socials">
+                    <a href = https://www.facebook.com/uchimvseh/ class = "socialicon blog" title = "https://www.facebook.com/uchimvseh/" alt="https://www.facebook.com/uchimvseh/" target="_blank">
+                    <span class="fa-stack fa-1x">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-inverse fa-stack-1x"></i>
+                    </span>
+                    <span class="sr-only">https://www.facebook.com/uchimvseh/</span>
+                    </a>
+                    <a href = https://twitter.com/uchimvseh class = "socialicon blog" title = "https://twitter.com/uchimvseh" alt="https://twitter.com/uchimvseh" target="_blank">
+                    <span class="fa-stack fa-1x">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-inverse fa-stack-1x"></i>
+                    </span>
+                    <span class="sr-only">https://twitter.com/uchimvseh</span>
+                    </a>
+                    <a href = https://www.youtube.com/channel/UCwM23zGVGtBd8ACweIiyJDg class = "socialicon blog" title = "https://www.youtube.com/channel/UCwM23zGVGtBd8ACweIiyJDg" alt="https://www.youtube.com/channel/UCwM23zGVGtBd8ACweIiyJDg" target="_blank">
+                    <span class="fa-stack fa-1x">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-youtube fa-inverse fa-stack-1x"></i>
+                    </span>
+                    <span class="sr-only">https://www.youtube.com/channel/UCwM23zGVGtBd8ACweIiyJDg</span>
+                    </a>
+                    <a href = https://www.instagram.com/uchimvseh class = "socialicon blog" title = "https://www.instagram.com/uchimvseh" alt="https://www.instagram.com/uchimvseh" target="_blank">
+                    <span class="fa-stack fa-1x">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-instagram fa-inverse fa-stack-1x"></i>
+                    </span>
+                    <span class="sr-only">https://www.instagram.com/uchimvseh</span>
+                    </a>
+                    <a href = https://vk.com/eduprof class = "socialicon blog" title = "https://vk.com/eduprof" alt="https://vk.com/eduprof" target="_blank">
+                    <span class="fa-stack fa-1x">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-vk fa-inverse fa-stack-1x"></i>
+                    </span>
+                    <span class="sr-only">https://vk.com/eduprof</span>
+                    </a>
+        </ul>
+    </div>
+    
+                        </div>
+                    </div>
+    
+            </div>
+            <nav class="nav navbar-nav d-md-none">
+                    <ul class="list-unstyled pt-3">
+                                        <li><a href="http://eduprof.ru/contacts/" target="_blank"" title="Техническая поддержка">Техническая поддержка</a></li>
+                                        <li>Мобильное приложение</li>
+                                    <li>
+                                        <ul class="list-unstyled ml-3">
+                                                            <li><a href="https://play.google.com/store/apps/details?id=com.moodle.moodlemobile%22%20target%3D%22_blank%22" title="Android App">Android App</a></li>
+                                                            <li><a href="https://apps.apple.com/ru/app/moodle-mobile/id633359593" target="_blank"" title="Apple App">Apple App</a></li>
+                                        </ul>
+                                    </li>
+                    </ul>
+            </nav>
+            
+            
+<ul style = "list-style-type:none">
+<li><a href="https://go.2gis.com/q4pj1c" target="_blank">109377, г. Москва, ул. Академика Скрябина, дом 9, стр. 4</a></li>
+<li><a href="https://go.2gis.com/b8gwis" target="_blank">109052, г. Москва, Рязанский проспект, дом 7, стр. 1</a></li>
+<li>© 2020 ГБОУ ДПО Центр «Профессионал»</li>
+</ul><script type="text/javascript">
+//<![CDATA[
+var require = {
+    baseUrl : 'https://sdo.eduprof.ru/lib/requirejs.php/1595936890/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://sdo.eduprof.ru/lib/javascript.php/1595936890/lib/jquery/jquery-3.4.1.min',
+        jqueryui: 'https://sdo.eduprof.ru/lib/javascript.php/1595936890/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://sdo.eduprof.ru/lib/javascript.php/1595936890/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+      // Stub module for 'process'. This is a workaround for a bug in MathJax (see MDL-60458).
+      '*': { process: 'core/first' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+<script type="text/javascript" src="https://sdo.eduprof.ru/lib/javascript.php/1595936890/lib/requirejs/require.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.util.js_pending("core/first");require(['core/first'], function() {
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp(function(videojs) {
+        videojs.options.flash.swf = "https://sdo.eduprof.ru/media/player/videojs/videojs/video-js.swf";
+videojs.addLanguage('ru', {
+  "Audio Player": "Аудио проигрыватель",
+  "Video Player": "Видео проигрыватель",
+  "Play": "Воспроизвести",
+  "Pause": "Приостановить",
+  "Replay": "Воспроизвести снова",
+  "Current Time": "Текущее время",
+  "Duration": "Продолжительность",
+  "Remaining Time": "Оставшееся время",
+  "Stream Type": "Тип потока",
+  "LIVE": "ОНЛАЙН",
+  "Loaded": "Загрузка",
+  "Progress": "Прогресс",
+  "Progress Bar": "Индикатор загрузки",
+  "progress bar timing: currentTime={1} duration={2}": "{1} из {2}",
+  "Fullscreen": "Полноэкранный режим",
+  "Non-Fullscreen": "Неполноэкранный режим",
+  "Mute": "Без звука",
+  "Unmute": "Со звуком",
+  "Playback Rate": "Скорость воспроизведения",
+  "Subtitles": "Субтитры",
+  "subtitles off": "Субтитры выкл.",
+  "Captions": "Подписи",
+  "captions off": "Подписи выкл.",
+  "Chapters": "Главы",
+  "Descriptions": "Описания",
+  "descriptions off": "Отключить описания",
+  "Audio Track": "Звуковая дорожка",
+  "Volume Level": "Уровень громкости",
+  "You aborted the media playback": "Вы прервали воспроизведение видео",
+  "A network error caused the media download to fail part-way.": "Ошибка сети вызвала сбой во время загрузки видео.",
+  "The media could not be loaded, either because the server or network failed or because the format is not supported.": "Невозможно загрузить видео из-за сетевого или серверного сбоя либо формат не поддерживается.",
+  "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "Воспроизведение видео было приостановлено из-за повреждения либо в связи с тем, что видео использует функции, неподдерживаемые вашим браузером.",
+  "No compatible source was found for this media.": "Совместимые источники для этого видео отсутствуют.",
+  "The media is encrypted and we do not have the keys to decrypt it.": "Видео в зашифрованном виде, и у нас нет ключей для расшифровки.",
+  "Play Video": "Воспроизвести видео",
+  "Close": "Закрыть",
+  "Close Modal Dialog": "Закрыть модальное окно",
+  "Modal Window": "Модальное окно",
+  "This is a modal window": "Это модальное окно",
+  "This modal can be closed by pressing the Escape key or activating the close button.": "Модальное окно можно закрыть нажав Esc или кнопку закрытия окна.",
+  ", opens captions settings dialog": ", откроется диалог настройки подписей",
+  ", opens subtitles settings dialog": ", откроется диалог настройки субтитров",
+  ", opens descriptions settings dialog": ", откроется диалог настройки описаний",
+  ", selected": ", выбрано",
+  "captions settings": "настройки подписей",
+  "subtitles settings": "настройки субтитров",
+  "descriptions settings": "настройки описаний",
+  "Text": "Текст",
+  "White": "Белый",
+  "Black": "Черный",
+  "Red": "Красный",
+  "Green": "Зеленый",
+  "Blue": "Синий",
+  "Yellow": "Желтый",
+  "Magenta": "Пурпурный",
+  "Cyan": "Голубой",
+  "Background": "Фон",
+  "Window": "Окно",
+  "Transparent": "Прозрачный",
+  "Semi-Transparent": "Полупрозрачный",
+  "Opaque": "Прозрачность",
+  "Font Size": "Размер шрифта",
+  "Text Edge Style": "Стиль края текста",
+  "None": "Ничего",
+  "Raised": "Поднятый",
+  "Depressed": "Пониженный",
+  "Uniform": "Одинаковый",
+  "Dropshadow": "Тень",
+  "Font Family": "Шрифт",
+  "Proportional Sans-Serif": "Пропорциональный без засечек",
+  "Monospace Sans-Serif": "Моноширинный без засечек",
+  "Proportional Serif": "Пропорциональный с засечками",
+  "Monospace Serif": "Моноширинный с засечками",
+  "Casual": "Случайный",
+  "Script": "Письменный",
+  "Small Caps": "Малые прописные",
+  "Reset": "Сбросить",
+  "restore all settings to the default values": "сбросить все найстройки по умолчанию",
+  "Done": "Готово",
+  "Caption Settings Dialog": "Диалог настроек подписи",
+  "Beginning of dialog window. Escape will cancel and close the window.": "Начало диалоговго окна. Кнопка Escape закроет или отменит окно",
+  "End of dialog window.": "Конец диалогового окна.",
+  "{1} is loading.": "{1} загружается."
+});
+
+    });
+});;
+M.util.js_pending('core/search-input'); require(['core/search-input'], function(amd) {amd.init("5f574ab02e534"); M.util.js_complete('core/search-input');});;
+
+require(['jquery', 'message_popup/notification_popover_controller'], function($, controller) {
+    var container = $('#nav-notification-popover-container');
+    var controller = new controller(container);
+    controller.registerEventListeners();
+    controller.registerListNavigationEventListeners();
+});
+;
+
+        require(['jquery'], function($) {
+            $('#jump-to-activity').change(function() {
+                if (!$(this).val()) {
+                    return false;
+                }
+                $('#url_select_f5f574ab028bf713').submit();
+            });
+        });
+    ;
+
+require(['theme_boost/loader']);
+require(['jquery','theme_boost/tooltip'], function($){$('[data-tooltip="tooltip"]').tooltip()});
+require(['theme_boost/drawer'], function(mod) {
+    mod.init();
+});
+;
+M.util.js_pending('core/notification'); require(['core/notification'], function(amd) {amd.init(27449, []); M.util.js_complete('core/notification');});;
+M.util.js_pending('core/log'); require(['core/log'], function(amd) {amd.setConfig({"level":"warn"}); M.util.js_complete('core/log');});;
+M.util.js_pending('core/page_global'); require(['core/page_global'], function(amd) {amd.init(); M.util.js_complete('core/page_global');});M.util.js_complete("core/first");
+});
+//]]>
+</script>
+<script type="text/javascript" src="https://sdo.eduprof.ru/lib/javascript.php/1595936890/theme/fordson/javascript/scrolltotop.js"></script>
+<script type="text/javascript" src="https://sdo.eduprof.ru/lib/javascript.php/1595936890/theme/fordson/javascript/scrollspy.js"></script>
+<script type="text/javascript" src="https://sdo.eduprof.ru/lib/javascript.php/1595936890/theme/fordson/javascript/blockslider.js"></script>
+<script type="text/javascript" src="https://sdo.eduprof.ru/lib/javascript.php/1595936890/theme/fordson/javascript/courseblock.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435","name":"\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435","error":"\u041e\u0448\u0438\u0431\u043a\u0430","info":"\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f","yes":"\u0414\u0430","no":"\u041d\u0435\u0442","cancel":"\u041e\u0442\u043c\u0435\u043d\u0430","confirm":"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c","areyousure":"\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b?","closebuttontitle":"\u0417\u0430\u043a\u0440\u044b\u0442\u044c","unknownerror":"\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430","file":"\u0424\u0430\u0439\u043b","url":"URL"},"repository":{"type":"\u0422\u0438\u043f","size":"\u0420\u0430\u0437\u043c\u0435\u0440:","invalidjson":"\u041d\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u0441\u0442\u0440\u043e\u043a\u0430 JSON","nofilesattached":"\u041d\u0435 \u043f\u0440\u0438\u043a\u0440\u0435\u043f\u043b\u0435\u043d \u043d\u0438 \u043e\u0434\u0438\u043d \u0444\u0430\u0439\u043b","filepicker":"\u0412\u044b\u0431\u043e\u0440 \u0444\u0430\u0439\u043b\u0430","logout":"\u0412\u044b\u0445\u043e\u0434","nofilesavailable":"\u041d\u0435\u0442 \u043d\u0438 \u043e\u0434\u043d\u043e\u0433\u043e \u0444\u0430\u0439\u043b\u0430","norepositoriesavailable":"\u041a \u0441\u043e\u0436\u0430\u043b\u0435\u043d\u0438\u044e, \u043d\u0438 \u043e\u0434\u043d\u043e \u0438\u0437 \u0412\u0430\u0448\u0438\u0445 \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u0445\u0440\u0430\u043d\u0438\u043b\u0438\u0449 \u0444\u0430\u0439\u043b\u043e\u0432 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0432\u0435\u0440\u043d\u0443\u0442\u044c \u0444\u0430\u0439\u043b\u044b \u0432 \u0437\u0430\u043f\u0440\u0430\u0448\u0438\u0432\u0430\u0435\u043c\u043e\u043c \u0444\u043e\u0440\u043c\u0430\u0442\u0435.","fileexistsdialogheader":"\u0424\u0430\u0439\u043b \u0441\u043e\u0437\u0434\u0430\u043d","fileexistsdialog_editor":"\u0424\u0430\u0439\u043b \u0441 \u044d\u0442\u0438\u043c \u0438\u043c\u0435\u043d\u0435\u043c \u0443\u0436\u0435 \u0431\u044b\u043b \u043f\u0440\u0438\u043a\u0440\u0435\u043f\u043b\u0435\u043d \u043a \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u0443\u0435\u043c\u043e\u043c\u0443 \u0442\u0435\u043a\u0441\u0442\u0443","fileexistsdialog_filemanager":"\u0424\u0430\u0439\u043b \u0441 \u044d\u0442\u0438\u043c \u0438\u043c\u0435\u043d\u0435\u043c \u0443\u0436\u0435 \u0431\u044b\u043b \u043f\u0440\u0438\u043a\u0440\u0435\u043f\u043b\u0435\u043d","renameto":"\u041f\u0435\u0440\u0435\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u0442\u044c \u0432 \u00ab{$a}\u00bb","referencesexist":"\u0415\u0441\u0442\u044c \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0438\u043c\u044b\/\u044f\u0440\u043b\u044b\u043a\u0438 \u0444\u0430\u0439\u043b\u043e\u0432 ({$a}), \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u044e\u0442 \u044d\u0442\u043e\u0442 \u0444\u0430\u0439\u043b \u0432 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430","select":"\u0412\u044b\u0431\u0440\u0430\u0442\u044c"},"admin":{"confirmdeletecomments":"\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b \u0432 \u0442\u043e\u043c, \u0447\u0442\u043e \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u0442\u0435\u0441\u044c \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u043a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0438?","confirmation":"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435"},"debug":{"debuginfo":"Debug info","line":"Line","stacktrace":"Stack trace"},"langconfig":{"labelsep":":"}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+(function() {Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"ru"});
+});
+M.util.help_popups.setup(Y);
+ M.util.js_pending('random5f574ab028bf714'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random5f574ab028bf714'); });
+})();
+//]]>
+</script>
+
+    
+        </div>
+    
+    </footer>
+
+</div>
+
+<a href="#" id="back-to-top" class="btn btn-primary btn-lg" role="button" title="Наверх"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a>
+
+</body>
+</html>
